@@ -5,11 +5,10 @@ window.Vue = require('vue')
 import vueRouter from 'vue-router'
 import vueAxios from 'vue-axios'
 import axios from 'axios'
-import { BootstrapVue } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
 
-Vue.use(vueRouter, vueAxios, axios, BootstrapVue)
+[vueRouter, vueAxios, axios, VueMaterial].forEach((x) => Vue.use(x));
 
 import { pages } from './pages/index.js'
 
