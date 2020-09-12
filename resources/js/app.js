@@ -5,17 +5,30 @@ window.Vue = require('vue')
 import vueRouter from 'vue-router'
 import vueAxios from 'vue-axios'
 import axios from 'axios'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
 
-[vueRouter, vueAxios, axios, VueMaterial].forEach((x) => Vue.use(x));
+[vueRouter, vueAxios, axios].forEach((x) => Vue.use(x));
 
 import { pages } from './pages/index.js'
 
 const routes = [
     {
-        name: 'Home',
-        path: '/',
+        name: 'Dashboard',
+        path: '/Dashboard',
+        component: pages.Home
+    },
+    {
+        name: 'Tugas',
+        path: '/Tugas',
+        component: pages.Home
+    },
+    {
+        name: 'Pengaturan',
+        path: '/Pengaturan',
+        component: pages.Home
+    },
+    {
+        name: 'Keluar',
+        path: '/Keluar',
         component: pages.Home
     }
 ]

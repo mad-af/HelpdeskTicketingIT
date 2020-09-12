@@ -3,7 +3,7 @@
         <div class="sidebar-items">
 
             <div v-for="x in sidebar" :key="x.name" >
-                <div class="items" v-bind:class="{ active: x.isActive }" v-on:click=" x.dropdown ? dropDown('notif') : to='#'">
+                <div class="items" v-bind:class="{ active: x.isActive }" v-on:click=" x.dropdown ? dropDown() : redirect(x.url)">
                     <span class="material-icons icon">
                         {{ x.icon }}
                     </span>
@@ -12,8 +12,10 @@
                         keyboard_arrow_down
                     </span>
                 </div>
-                <div v-for="y in x.dropdownItems" :key="y" class="items-dropdown" v-show="isOpen && x.dropdown">
-                    <span>{{ y }}</span>
+                <div class="dropdown" v-show="isOpen && x.dropdown">
+                    <div v-for="y in x.dropdownItems" :key="y" class="items-dropdown" >
+                        <span>{{ y }}</span>
+                    </div>
                 </div>
             </div>
 
@@ -55,11 +57,15 @@
         color: #e3e3e3;
         font-size: 35px;
     }
+    .items .arrow {
+        background: transparent !important;
+    }
     .items:hover, .items:hover .arrow {
         color: #2A5CDE;
         background: #2a5dde05;
         border-left-color: #2A5CDE;
     }
+    
     .active {
         color: #2A5CDE;
         background: #2a5dde05;
@@ -68,12 +74,15 @@
 </style>
 
 <style lang="scss">
+    .dropdown {
+        padding: 5px 0;
+        border-left: 5px solid #2A5CDE;
+    }
     .items-dropdown {
         padding: 0 0 0 9em;
         display: flex;
         flex-direction: column;
         font-size: 13px;
-        border-left: 5px solid #2A5CDE;
         cursor: pointer;
     }
     .items-dropdown span {
@@ -97,13 +106,23 @@ export default {
                     name: 'Pengaturan',
                     icon: 'settings',
                     dropdown: false,
-                    
+                    dropdownItems: [],
+                    url: {
+                        isActive: true,
+                        routeName: 'Pengaturan'
+                    },
+                    isActive: false
                 },
                 {
                     name: 'Keluar',
                     icon: 'exit_to_app',
                     dropdown: false,
-                    
+                    dropdownItems: [],
+                    url: {
+                        isActive: true,
+                        routeName: 'Keluar'
+                    },
+                    isActive: false
                 }
             ]
         }
@@ -122,7 +141,12 @@ export default {
                             name: 'My Task',
                             icon: 'article',
                             dropdown: false,
-                            
+                            dropdownItems: [],
+                            url: {
+                                isActive: true,
+                                routeName: 'My Task'
+                            },
+                            isActive: false
                         }
                     )
                     break;
@@ -133,14 +157,23 @@ export default {
                             name: 'Dashboard',
                             icon: 'dashboard',
                             dropdown: false,
-                            
+                            dropdownItems: [],
+                            url: {
+                                isActive: true,
+                                routeName: 'Dashboard'
+                            },
+                            isActive: false
                         },
                         {
                             name: 'Tugas',
                             icon: 'list',
                             dropdown: true,
                             dropdownItems: ['Daftar Tugas', 'Laporan'],
-                            
+                            url: {
+                                isActive: false,
+                                routeName: 'Tugas'
+                            },
+                            isActive: false
                         }
                     )
                     break;
@@ -157,7 +190,13 @@ export default {
                 }
             }
         },
-        dropDown: function (param) {
+        redirect: function (param) {
+            const {isActive, routeName} = param;
+            if(isActive) {
+                return this.$router.push({ name: routeName }).catch(err => err);
+            }
+        },
+        dropDown: function () {
             if (!this.isOpen || this.isOpen === false){
                 this.isOpen = true;
                 this.arrowTransform = 'rotate(180deg)';

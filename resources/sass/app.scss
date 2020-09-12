@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 *,
 ::before,
@@ -10,7 +10,8 @@
 }
   
   body {
-      color: #555555;
-      overflow: hidden;
-      background: #f8f8f8;
+    font-family: lato;
+    color: #555555;
+    overflow: hidden;
+    background: #f8f8f8;
   }
