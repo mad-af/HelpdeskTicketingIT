@@ -2043,59 +2043,137 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isOpenUser: false,
-      isOpenNotif: false,
-      colorNotif: '#e3e3e3'
+      isOpen: false,
+      color: '#e3e3e3',
+      massage: [],
+      dataBadge: null
     };
   },
-  computed: {
-    computedOpenUser: function computedOpenUser() {
-      return this.isOpenUser;
-    },
-    computedOpenNotif: function computedOpenNotif() {
-      return this.isOpenNotif;
-    }
+  created: function created() {
+    this.massageNotif();
+    this.closeOutside();
+    this.badge(this.massage);
   },
   methods: {
-    dropDown: function dropDown(param) {
-      switch (param) {
-        case 'user':
-          if (!this.isOpenUser || this.isOpenUser === false) {
-            this.isOpenUser = true;
-            this.isOpenNotif = false;
-          } else {
-            this.isOpenUser = false;
-          }
-
-          break;
-
-        case 'notif':
-          if (!this.isOpenNotif || this.isOpenNotif === false) {
-            this.isOpenNotif = true;
-            this.colorNotif = '#cdcdcd';
-            this.isOpenUser = false;
-          } else {
-            this.isOpenNotif = false;
-            this.colorNotif = '#e3e3e3';
-          }
-
-          break;
+    massageNotif: function massageNotif() {
+      var res = [{
+        id: 1,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: true
+      }, {
+        id: 2,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: true
+      }, {
+        id: 3,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: true
+      }, {
+        id: 4,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 5,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 6,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 7,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 8,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 9,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }, {
+        id: 10,
+        icon: 'account_circle',
+        massage: 'Hi, permintaanmu sedang kami proses',
+        isActive: false
+      }];
+      this.massage = res;
+    },
+    badge: function badge(param) {
+      for (var i = 0; i < param.length; i++) {
+        if (param[i].isActive === true) {
+          this.dataBadge++;
+        }
       }
+    },
+    dropdownItem: function dropdownItem(param) {
+      this.massage[param - 1].isActive = false;
+    },
+    dropDown: function dropDown() {
+      if (!this.isOpen || this.isOpen === false) {
+        this.isOpen = true;
+        this.color = '#ccc';
+        this.dataBadge = null;
+      } else {
+        this.isOpen = false;
+        this.color = '#e3e3e3';
+        this.badge(this.massage);
+      }
+    },
+    closeOutside: function closeOutside() {
+      var self = this;
+      window.addEventListener('click', function (e) {
+        // close dropdown when clicked outside
+        if (!self.$el.contains(e.target)) {
+          if (self.isOpen) {
+            self.isOpen = false;
+            self.color = '#e3e3e3';
+            self.badge(self.massage);
+          }
+        }
+      });
     }
-  },
-  created: function created() {
-    var self = this;
-    window.addEventListener('click', function (e) {
-      // close dropdown when clicked outside
-      if (!self.$el.contains(e.target)) {
-        self.isOpenUser = false;
-        self.isOpenNotif = false;
-        self.colorNotif = '#e3e3e3';
-      }
-    });
   }
 });
 
@@ -2405,7 +2483,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "nav[data-v-ffd30dee] {\n  width: 100vw;\n  height: 5em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #fff;\n  border-bottom: 0.5px solid #e3e3e3;\n}\n.navbar[data-v-ffd30dee] {\n  width: 90%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.component[data-v-ffd30dee] {\n  width: 20%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-direction: row;\n}\n.component-user[data-v-ffd30dee] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-direction: row;\n  cursor: pointer;\n}\n.avatar[data-v-ffd30dee] {\n  width: 35px;\n  height: 35px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 100%;\n  background: blue;\n  color: white;\n  font-size: 20px;\n}\n.component-user span[data-v-ffd30dee] {\n  max-width: 10em;\n  padding: 0 0 0 15px;\n}\n.component-notif[data-v-ffd30dee] {\n  width: 35px;\n  height: 35px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.notif[data-v-ffd30dee] {\n  font-size: 30px;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "nav[data-v-ffd30dee] {\n  width: 100vw;\n  height: 5em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #fff;\n  border-bottom: 0.5px solid #e3e3e3;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  cursor: context-menu;\n}\n.navbar[data-v-ffd30dee] {\n  width: 90%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.component[data-v-ffd30dee] {\n  width: 20%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-direction: row;\n}\n.component-user[data-v-ffd30dee] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-direction: row;\n}\n.avatar[data-v-ffd30dee] {\n  width: 35px;\n  height: 35px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 100%;\n  background: blue;\n  color: white;\n  font-size: 20px;\n}\n.component-user span[data-v-ffd30dee] {\n  max-width: 10em;\n  padding: 0 0 0 15px;\n}\n.component-notif[data-v-ffd30dee] {\n  width: 35px;\n  height: 35px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.notif[data-v-ffd30dee] {\n  font-size: 30px;\n  position: relative;\n  cursor: pointer;\n}\n.notif[data-badge][data-v-ffd30dee]::after {\n  content: attr(data-badge);\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  font-size: 0.35em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background: #2A5CDE;\n  color: #fff;\n  width: 23px;\n  height: 23px;\n  border: 3px solid #fff;\n  border-radius: 50%;\n  font-family: lato;\n}", ""]);
 
 // exports
 
@@ -2424,7 +2502,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".dropdown[data-v-ffd30dee] {\n  top: 4.5em;\n  padding: 5px;\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  background-color: #fff;\n  border: 0.5px solid #e3e3e3;\n  border-radius: 5px;\n  z-index: 1;\n}\n.dropdown-subs[data-v-ffd30dee] {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  cursor: pointer;\n}\n.dropdown-subs[data-v-ffd30dee]:hover {\n  background: #fafafa;\n}\n.dropdown-subs span[data-v-ffd30dee] {\n  padding: 0 0 0 15px;\n}\n.dropdown-subs .icon[data-v-ffd30dee] {\n  color: #e3e3e3;\n}", ""]);
+exports.push([module.i, ".dropdown[data-v-ffd30dee] {\n  top: 4.5em;\n  right: 1.5em;\n  width: 25em;\n  height: 500px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  background-color: #fff;\n  border: 0.5px solid #e3e3e3;\n  border-top: 3px solid #2A5CDE;\n  border-radius: 5px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);\n  z-index: 1;\n}\n.dropdown-subs[data-v-ffd30dee] {\n  width: 100%;\n  min-height: 70px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  background: #fff;\n  cursor: pointer;\n}\n.active[data-v-ffd30dee], .active span[data-v-ffd30dee] {\n  color: #2A5CDE !important;\n  background: #2a5dde05;\n}\n.dropdown-subs[data-v-ffd30dee]:hover {\n  background: #fafafa;\n}\n.dropdown-subs span[data-v-ffd30dee] {\n  padding: 0 0 0 15px;\n  background: transparent !important;\n}\n.dropdown-subs .icon[data-v-ffd30dee] {\n  color: #e3e3e3;\n}\n.scroll[data-v-ffd30dee] {\n  overflow-y: auto;\n}", ""]);
 
 // exports
 
@@ -20851,54 +20929,7 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "component" }, [
-        _c("div", [
-          _c(
-            "div",
-            {
-              staticClass: "component-user",
-              on: {
-                click: function($event) {
-                  return _vm.dropDown("user")
-                }
-              }
-            },
-            [_vm._m(1), _vm._v(" "), _c("span", [_vm._v("Mochamad Atha")])]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isOpenUser,
-                  expression: "isOpenUser"
-                }
-              ],
-              staticClass: "dropdown",
-              style: { "min-width": "160px" }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "dropdown-subs", style: { height: "3em" } },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "material-icons icon",
-                      style: { "font-size": "28px" }
-                    },
-                    [_vm._v("\n              exit_to_app\n            ")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Log Out")])
-                ]
-              )
-            ]
-          )
-        ]),
+        _vm._m(1),
         _vm._v(" "),
         _c("div", [
           _c(
@@ -20907,17 +20938,22 @@ var render = function() {
               staticClass: "component-notif",
               on: {
                 click: function($event) {
-                  return _vm.dropDown("notif")
+                  return _vm.dropDown()
                 }
               }
             },
             [
               _c(
                 "span",
-                {
-                  staticClass: "material-icons notif",
-                  style: { color: _vm.colorNotif }
-                },
+                _vm._b(
+                  {
+                    staticClass: "material-icons notif",
+                    style: { color: _vm.color }
+                  },
+                  "span",
+                  { "data-badge": _vm.dataBadge },
+                  false
+                ),
                 [_vm._v("\n            notifications\n          ")]
               )
             ]
@@ -20930,34 +20966,47 @@ var render = function() {
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: _vm.isOpenNotif,
-                  expression: "isOpenNotif"
+                  value: _vm.isOpen,
+                  expression: "isOpen"
                 }
               ],
-              staticClass: "dropdown",
-              style: { width: "30em", right: "1.5em" }
+              staticClass: "dropdown scroll"
             },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "dropdown-subs",
-                  style: { height: "4em", "font-size": "15px" }
-                },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "material-icons icon",
-                      style: { "font-size": "40px" }
-                    },
-                    [_vm._v("\n              account_circle\n            ")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Hi, permintaanmu sedang kami proses")])
-                ]
-              )
-            ]
+            _vm._l(_vm.massage, function(x) {
+              return _c("div", { key: x.id }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-subs",
+                    class: { active: x.isActive },
+                    on: {
+                      click: function($event) {
+                        return _vm.dropdownItem(x.id)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "material-icons icon",
+                        style: { "font-size": "50px" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(x.icon) +
+                            "\n              "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(" " + _vm._s(x.massage) + " ")])
+                  ]
+                )
+              ])
+            }),
+            0
           )
         ])
       ])
@@ -20977,7 +21026,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar" }, [_c("div", [_vm._v("MA")])])
+    return _c("div", [
+      _c("div", { staticClass: "component-user" }, [
+        _c("div", { staticClass: "avatar" }, [_c("div", [_vm._v("MA")])]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Mochamad Atha")])
+      ])
+    ])
   }
 ]
 render._withStripped = true

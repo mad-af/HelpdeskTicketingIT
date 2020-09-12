@@ -6,6 +6,21 @@
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e3e3e3;
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaaaaa;
+  border-radius: 25px;
+  position: absolute;
+}
+
 body {
   font-family: lato;
   color: #555555;
