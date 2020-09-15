@@ -28,3 +28,14 @@ body {
   background: #f8f8f8;
 }
 
+.material-icons {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.scroll {
+  overflow-y: auto;
+}
+

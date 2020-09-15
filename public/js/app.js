@@ -2068,9 +2068,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2284,31 +2281,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isOpen: false,
-      arrowTransform: 'none',
       itemActive: '',
       sidebar: [{
-        name: 'Pengaturan',
-        icon: 'settings',
-        dropdown: false,
-        dropdownItems: [],
-        url: {
-          isActive: true,
-          routeName: 'Pengaturan'
+        name: 'Profil',
+        icon: 'person_outline',
+        dropdown: {
+          items: [],
+          set: {
+            arrow: 'none',
+            isOpen: false
+          },
+          isActive: false
         },
+        url: 'Pengaturan',
         isActive: false
       }, {
         name: 'Keluar',
         icon: 'exit_to_app',
-        dropdown: false,
-        dropdownItems: [],
-        url: {
-          isActive: true,
-          routeName: 'Keluar'
+        dropdown: {
+          items: [],
+          set: {
+            arrow: 'none',
+            isOpen: false
+          },
+          isActive: false
         },
+        url: 'Keluar',
         isActive: false
       }]
     };
@@ -2325,12 +2328,15 @@ __webpack_require__.r(__webpack_exports__);
           this.sidebar.unshift({
             name: 'My Task',
             icon: 'article',
-            dropdown: false,
-            dropdownItems: [],
-            url: {
-              isActive: true,
-              routeName: 'My Task'
+            dropdown: {
+              items: [],
+              set: {
+                arrow: 'none',
+                isOpen: false
+              },
+              isActive: false
             },
+            url: 'My Task',
             isActive: false
           });
           break;
@@ -2340,22 +2346,36 @@ __webpack_require__.r(__webpack_exports__);
           this.sidebar.unshift({
             name: 'Dashboard',
             icon: 'dashboard',
-            dropdown: false,
-            dropdownItems: [],
-            url: {
-              isActive: true,
-              routeName: 'Dashboard'
+            dropdown: {
+              items: [],
+              set: {
+                arrow: 'none',
+                isOpen: false
+              },
+              isActive: false
             },
+            url: 'Dashboard',
             isActive: false
           }, {
             name: 'Tugas',
             icon: 'list',
-            dropdown: true,
-            dropdownItems: ['Daftar Tugas', 'Laporan'],
-            url: {
-              isActive: false,
-              routeName: 'Tugas'
+            dropdown: {
+              items: [{
+                name: 'Daftar Tugas',
+                url: 'Tugas.daftarTugas',
+                isActive: false
+              }, {
+                name: 'Laporan',
+                url: 'Tugas.laporan',
+                isActive: false
+              }],
+              set: {
+                arrow: 'none',
+                isOpen: false
+              },
+              isActive: true
             },
+            url: 'Tugas',
             isActive: false
           });
           break;
@@ -2373,24 +2393,22 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     redirect: function redirect(param) {
-      var isActive = param.isActive,
-          routeName = param.routeName;
-
-      if (isActive) {
-        return this.$router.push({
-          name: routeName
-        })["catch"](function (err) {
-          return err;
-        });
-      }
+      return this.$router.push({
+        name: param
+      })["catch"](function (err) {
+        return err;
+      });
     },
-    dropDown: function dropDown() {
-      if (!this.isOpen || this.isOpen === false) {
-        this.isOpen = true;
-        this.arrowTransform = 'rotate(180deg)';
+    dropDown: function dropDown(param) {
+      var index = this.searchIndexByName(param, this.sidebar);
+      var dropdown = this.sidebar[index].dropdown.set;
+
+      if (!dropdown.isOpen || dropdown.isOpen === false) {
+        dropdown.isOpen = true;
+        dropdown.arrow = 'rotate(180deg)';
       } else {
-        this.isOpen = false;
-        this.arrowTransform = 'none';
+        dropdown.isOpen = false;
+        dropdown.arrow = 'none';
       }
     }
   }
@@ -2502,7 +2520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".dropdown[data-v-ffd30dee] {\n  top: 4.5em;\n  right: 1.5em;\n  width: 25em;\n  height: 500px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  background-color: #fff;\n  border: 0.5px solid #e3e3e3;\n  border-top: 3px solid #2A5CDE;\n  border-radius: 5px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);\n  z-index: 1;\n}\n.dropdown-subs[data-v-ffd30dee] {\n  width: 100%;\n  min-height: 70px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  background: #fff;\n  cursor: pointer;\n}\n.active[data-v-ffd30dee], .active span[data-v-ffd30dee] {\n  color: #2A5CDE !important;\n  background: #2a5dde05;\n}\n.dropdown-subs[data-v-ffd30dee]:hover {\n  background: #fafafa;\n}\n.dropdown-subs span[data-v-ffd30dee] {\n  padding: 0 0 0 15px;\n  background: transparent !important;\n}\n.dropdown-subs .icon[data-v-ffd30dee] {\n  color: #e3e3e3;\n}\n.scroll[data-v-ffd30dee] {\n  overflow-y: auto;\n}", ""]);
+exports.push([module.i, ".dropdown[data-v-ffd30dee] {\n  top: 4.5em;\n  right: 1.5em;\n  width: 25em;\n  height: 500px;\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  background-color: #fff;\n  border: 0.5px solid #e3e3e3;\n  border-top: 3px solid #2A5CDE;\n  border-radius: 5px;\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);\n  z-index: 1;\n}\n.dropdown-subs[data-v-ffd30dee] {\n  width: 100%;\n  min-height: 70px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  background: #fff;\n  cursor: pointer;\n}\n.active[data-v-ffd30dee], .active span[data-v-ffd30dee] {\n  color: #2A5CDE !important;\n  background: #2a5dde05;\n}\n.dropdown-subs[data-v-ffd30dee]:hover {\n  background: #fafafa;\n}\n.dropdown-subs span[data-v-ffd30dee] {\n  padding: 0 0 0 15px;\n  background: transparent !important;\n}\n.dropdown-subs .icon[data-v-ffd30dee] {\n  color: #e3e3e3;\n}", ""]);
 
 // exports
 
@@ -2521,7 +2539,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".sidebar[data-v-3f46d24f] {\n  width: 300px;\n  height: calc(var(--vh, 1vh) * 100);\n  display: flex;\n  background: #fff;\n}\n.sidebar-items[data-v-3f46d24f] {\n  width: 100%;\n  height: 100%;\n  padding: 35px 0 0;\n  display: block;\n}\n.items[data-v-3f46d24f] {\n  height: 95px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-left: 5px solid transparent;\n  border-bottom: 0.5px solid #e3e3e3;\n  cursor: pointer;\n}\n.items span[data-v-3f46d24f] {\n  padding: 0 0 0 35px;\n}\n.icon[data-v-3f46d24f] {\n  font-size: 55px;\n}\n.arrow[data-v-3f46d24f] {\n  left: 245px;\n  position: absolute;\n  color: #e3e3e3;\n  font-size: 35px;\n}\n.items .arrow[data-v-3f46d24f] {\n  background: transparent !important;\n}\n.items[data-v-3f46d24f]:hover, .items:hover .arrow[data-v-3f46d24f] {\n  color: #2A5CDE;\n  background: #2a5dde05;\n  border-left-color: #2A5CDE;\n}\n.active[data-v-3f46d24f] {\n  color: #2A5CDE;\n  background: #2a5dde05;\n  border-left-color: #2A5CDE;\n}", ""]);
+exports.push([module.i, ".sidebar[data-v-3f46d24f] {\n  width: 300px;\n  height: calc(var(--vh, 1vh) * 100);\n  display: flex;\n  background: #fff;\n}\n.sidebar-items[data-v-3f46d24f] {\n  width: 100%;\n  height: 100%;\n  padding: 35px 0 50px;\n  display: block;\n}\n.items[data-v-3f46d24f] {\n  height: 95px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-left: 5px solid transparent;\n  border-bottom: 0.5px solid #e3e3e3;\n  cursor: pointer;\n}\n.items span[data-v-3f46d24f] {\n  padding: 0 0 0 35px;\n}\n.icon[data-v-3f46d24f] {\n  font-size: 55px;\n}\n.arrow[data-v-3f46d24f] {\n  left: 245px;\n  position: absolute;\n  color: #e3e3e3;\n  font-size: 35px;\n}\n.items .arrow[data-v-3f46d24f] {\n  background: transparent !important;\n}\n.items[data-v-3f46d24f]:hover, .items:hover .arrow[data-v-3f46d24f] {\n  color: #2A5CDE;\n  background: #2a5dde05;\n  border-left-color: #2A5CDE;\n}\n.active[data-v-3f46d24f] {\n  color: #2A5CDE;\n  background: #2a5dde05;\n  border-left-color: #2A5CDE;\n}", ""]);
 
 // exports
 
@@ -2540,7 +2558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".dropdown {\n  padding: 5px 0;\n  border-left: 5px solid #2A5CDE;\n}\n.items-dropdown {\n  padding: 0 0 0 9em;\n  display: flex;\n  flex-direction: column;\n  font-size: 13px;\n  cursor: pointer;\n}\n.items-dropdown span {\n  padding: 5px 0;\n}\n.items-dropdown:hover {\n  color: #2A5CDE;\n}", ""]);
+exports.push([module.i, ".dropdown {\n  padding: 5px 0;\n  border-left: 5px solid #2A5CDE;\n}\n.items-dropdown {\n  padding: 0 0 0 9em;\n  display: flex;\n  flex-direction: column;\n  font-size: 13px;\n  cursor: pointer;\n}\n.items-dropdown span {\n  padding: 5px 0;\n}\n.items-dropdown:hover {\n  color: #2A5CDE;\n}\n.items-dropdown .active {\n  color: #2A5CDE;\n}", ""]);
 
 // exports
 
@@ -21056,84 +21074,100 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "sidebar", attrs: { id: "sidebar" } }, [
-    _c(
-      "div",
-      { staticClass: "sidebar-items" },
-      _vm._l(_vm.sidebar, function(x) {
-        return _c("div", { key: x.name }, [
-          _c(
-            "div",
-            {
-              staticClass: "items",
-              class: { active: x.isActive },
-              on: {
-                click: function($event) {
-                  x.dropdown ? _vm.dropDown() : _vm.redirect(x.url)
+  return _c(
+    "section",
+    { staticClass: "sidebar scroll", attrs: { id: "sidebar" } },
+    [
+      _c(
+        "div",
+        { staticClass: "sidebar-items" },
+        _vm._l(_vm.sidebar, function(x) {
+          return _c("div", { key: x.name }, [
+            _c(
+              "div",
+              {
+                staticClass: "items",
+                class: { active: x.isActive },
+                on: {
+                  click: function($event) {
+                    x.dropdown.isActive
+                      ? _vm.dropDown(x.name)
+                      : _vm.redirect(x.url)
+                  }
                 }
-              }
-            },
-            [
-              _c("span", { staticClass: "material-icons icon" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(x.icon) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("span", { style: { width: "110px" } }, [
-                _vm._v(_vm._s(x.name))
-              ]),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: x.dropdown,
-                      expression: "x.dropdown"
-                    }
-                  ],
-                  staticClass: "material-icons arrow",
-                  style: { padding: "0", transform: _vm.arrowTransform }
-                },
-                [
+              },
+              [
+                _c("span", { staticClass: "material-icons icon" }, [
                   _vm._v(
-                    "\n                    keyboard_arrow_down\n                "
+                    "\n                    " +
+                      _vm._s(x.icon) +
+                      "\n                "
                   )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.isOpen && x.dropdown,
-                  expression: "isOpen && x.dropdown"
-                }
-              ],
-              staticClass: "dropdown"
-            },
-            _vm._l(x.dropdownItems, function(y) {
-              return _c("div", { key: y, staticClass: "items-dropdown" }, [
-                _c("span", [_vm._v(_vm._s(y))])
-              ])
-            }),
-            0
-          )
-        ])
-      }),
-      0
-    )
-  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { style: { width: "110px" } }, [
+                  _vm._v(_vm._s(x.name))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: x.dropdown.isActive,
+                        expression: "x.dropdown.isActive"
+                      }
+                    ],
+                    staticClass: "material-icons arrow",
+                    style: { padding: "0", transform: x.dropdown.set.arrow }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    keyboard_arrow_down\n                "
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: x.dropdown.set.isOpen && x.dropdown.isActive,
+                    expression: "x.dropdown.set.isOpen && x.dropdown.isActive"
+                  }
+                ],
+                staticClass: "dropdown"
+              },
+              _vm._l(x.dropdown.items, function(y) {
+                return _c(
+                  "div",
+                  {
+                    key: y.name,
+                    staticClass: "items-dropdown",
+                    on: {
+                      click: function($event) {
+                        return _vm.redirect(y.url)
+                      }
+                    }
+                  },
+                  [_c("span", [_vm._v(_vm._s(y.name))])]
+                )
+              }),
+              0
+            )
+          ])
+        }),
+        0
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -36458,8 +36492,12 @@ var routes = [{
   path: '/Dashboard',
   component: _pages_index_js__WEBPACK_IMPORTED_MODULE_3__["pages"].Home
 }, {
-  name: 'Tugas',
-  path: '/Tugas',
+  name: 'Tugas.daftarTugas',
+  path: '/Tugas/daftar-tugas',
+  component: _pages_index_js__WEBPACK_IMPORTED_MODULE_3__["pages"].Home
+}, {
+  name: 'Tugas.laporan',
+  path: '/Tugas/laporan',
   component: _pages_index_js__WEBPACK_IMPORTED_MODULE_3__["pages"].Home
 }, {
   name: 'Pengaturan',

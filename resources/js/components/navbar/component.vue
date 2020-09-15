@@ -156,9 +156,6 @@
   .dropdown-subs .icon {
     color: #e3e3e3;
   }
-  .scroll {
-    overflow-y: auto;
-  }
 </style>
 
 <script>

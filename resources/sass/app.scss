@@ -28,3 +28,11 @@ body {
   overflow: hidden;
   background: #f8f8f8;
 }
+
+.material-icons {
+  user-select: none;
+}
+
+.scroll {
+  overflow-y: auto;
+}

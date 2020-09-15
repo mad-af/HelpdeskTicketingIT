@@ -1,20 +1,20 @@
 <template>
-    <section class="sidebar" id="sidebar">
+    <section class="sidebar scroll" id="sidebar">
         <div class="sidebar-items">
 
             <div v-for="x in sidebar" :key="x.name" >
-                <div class="items" v-bind:class="{ active: x.isActive }" v-on:click=" x.dropdown ? dropDown() : redirect(x.url)">
+                <div class="items" v-bind:class="{ active: x.isActive }" v-on:click=" x.dropdown.isActive ? dropDown(x.name) : redirect(x.url)">
                     <span class="material-icons icon">
                         {{ x.icon }}
                     </span>
                     <span v-bind:style="{ 'width': '110px' }">{{ x.name }}</span>
-                    <span class="material-icons arrow" v-bind:style="{ 'padding': '0', transform: arrowTransform }" v-show="x.dropdown" >
+                    <span class="material-icons arrow" v-bind:style="{ 'padding': '0', transform: x.dropdown.set.arrow }" v-show="x.dropdown.isActive" >
                         keyboard_arrow_down
                     </span>
                 </div>
-                <div class="dropdown" v-show="isOpen && x.dropdown">
-                    <div v-for="y in x.dropdownItems" :key="y" class="items-dropdown" >
-                        <span>{{ y }}</span>
+                <div class="dropdown" v-show="x.dropdown.set.isOpen && x.dropdown.isActive">
+                    <div v-for="y in x.dropdown.items" :key="y.name" class="items-dropdown" v-on:click="redirect(y.url)">
+                        <span>{{ y.name }}</span>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
     .sidebar-items {
         width: 100%;
         height: 100%;
-        padding: 35px 0 0 ;
+        padding: 35px 0 50px ;
         display: block;
     }
     .items {
@@ -91,37 +91,43 @@
     .items-dropdown:hover {
         color: #2A5CDE;
     }
+    .items-dropdown .active {
+        color: #2A5CDE
+    }
 </style>
-
 
 <script>
 export default {
     data: function () {
         return {
-            isOpen: false,
-            arrowTransform: 'none',
             itemActive: '',
             sidebar: [
                 {
-                    name: 'Pengaturan',
-                    icon: 'settings',
-                    dropdown: false,
-                    dropdownItems: [],
-                    url: {
-                        isActive: true,
-                        routeName: 'Pengaturan'
+                    name: 'Profil',
+                    icon: 'person_outline',
+                    dropdown: {
+                        items: [],
+                        set: {
+                            arrow: 'none',
+                            isOpen: false
+                        },
+                        isActive: false
                     },
+                    url: 'Pengaturan',
                     isActive: false
                 },
                 {
                     name: 'Keluar',
                     icon: 'exit_to_app',
-                    dropdown: false,
-                    dropdownItems: [],
-                    url: {
-                        isActive: true,
-                        routeName: 'Keluar'
+                    dropdown:{
+                        items: [],
+                        set: {
+                            arrow: 'none',
+                            isOpen: false
+                        },
+                        isActive: false
                     },
+                    url: 'Keluar',
                     isActive: false
                 }
             ]
@@ -140,12 +146,15 @@ export default {
                         {
                             name: 'My Task',
                             icon: 'article',
-                            dropdown: false,
-                            dropdownItems: [],
-                            url: {
-                                isActive: true,
-                                routeName: 'My Task'
+                            dropdown: {
+                                items: [],
+                                set: {
+                                    arrow: 'none',
+                                    isOpen: false
+                                },
+                                isActive: false
                             },
+                            url: 'My Task',
                             isActive: false
                         }
                     )
@@ -156,26 +165,43 @@ export default {
                         {
                             name: 'Dashboard',
                             icon: 'dashboard',
-                            dropdown: false,
-                            dropdownItems: [],
-                            url: {
-                                isActive: true,
-                                routeName: 'Dashboard'
+                            dropdown: {
+                                items: [],
+                                set: {
+                                    arrow: 'none',
+                                    isOpen: false,
+                                },
+                                isActive: false
                             },
+                            url: 'Dashboard',
                             isActive: false
                         },
                         {
                             name: 'Tugas',
                             icon: 'list',
-                            dropdown: true,
-                            dropdownItems: ['Daftar Tugas', 'Laporan'],
-                            url: {
-                                isActive: false,
-                                routeName: 'Tugas'
+                            dropdown:{
+                                items: [
+                                    { 
+                                        name: 'Daftar Tugas',
+                                        url: 'Tugas.daftarTugas',
+                                        isActive: false
+                                    },
+                                    { 
+                                        name: 'Laporan',
+                                        url: 'Tugas.laporan',
+                                        isActive: false
+                                    },
+                                ],
+                                set: {
+                                    arrow: 'none',
+                                    isOpen: false
+                                },
+                                isActive: true
                             },
+                            url: 'Tugas',
                             isActive: false
                         }
-                    )
+                    );
                     break;
             }
         },
@@ -191,19 +217,18 @@ export default {
             }
         },
         redirect: function (param) {
-            const {isActive, routeName} = param;
-            if(isActive) {
-                return this.$router.push({ name: routeName }).catch(err => err);
-            }
+            return this.$router.push({ name: param }).catch(err => err);          
         },
-        dropDown: function () {
-            if (!this.isOpen || this.isOpen === false){
-                this.isOpen = true;
-                this.arrowTransform = 'rotate(180deg)';
+        dropDown: function (param) {
+            let index = this.searchIndexByName(param, this.sidebar);
+            const dropdown = this.sidebar[index].dropdown.set;
+            if (!dropdown.isOpen || dropdown.isOpen === false){
+                dropdown.isOpen = true;
+                dropdown.arrow = 'rotate(180deg)';
             } 
             else {
-                this.isOpen = false;
-                this.arrowTransform = 'none';
+                dropdown.isOpen = false;
+                dropdown.arrow = 'none';
             }  
         }
     }

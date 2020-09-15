@@ -17,8 +17,13 @@ const routes = [
         component: pages.Home
     },
     {
-        name: 'Tugas',
-        path: '/Tugas',
+        name: 'Tugas.daftarTugas',
+        path: '/Tugas/daftar-tugas',
+        component: pages.Home
+    },
+    {
+        name: 'Tugas.laporan',
+        path: '/Tugas/laporan',
         component: pages.Home
     },
     {
