@@ -1,10 +1,7 @@
 <template>
     <div>
-        <Navbar></Navbar>
-        <Sidebar></Sidebar>
-        <div class='container'>
-            <router-view></router-view>
-        </div>
+        <Navbar />
+        <router-view></router-view>
     </div>
 </template>
 
@@ -13,8 +10,8 @@ import { components } from "../../components/index"
 
 export default {
     components: {
-        'Navbar': components.Navbar,
-        'Sidebar': components.Sidebar
-    },
+        Navbar: components.Navbar,
+        Sidebar: components.Sidebar
+    }
 }
 </script>

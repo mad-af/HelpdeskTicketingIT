@@ -13,7 +13,7 @@
                     </span>
                 </div>
                 <div class="dropdown" v-show="x.dropdown.set.isOpen && x.dropdown.isActive">
-                    <div v-for="y in x.dropdown.items" :key="y.name" class="items-dropdown" v-on:click="redirect(y.url)">
+                    <div v-for="y in x.dropdown.items" :key="y.name" class="items-dropdown" v-bind:class="{ active: y.isActive }" v-on:click="redirect(y.url)">
                         <span>{{ y.name }}</span>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
 <style lang="scss" scoped>
     .sidebar {
         width: 300px;
-        height: calc(var(--vh, 1vh) * 100);
+        height: calc(100vh - 5em);
         display: flex;
         background: #fff;
     }
@@ -83,6 +83,7 @@
         display: flex;
         flex-direction: column;
         font-size: 13px;
+        background: transparent !important;
         cursor: pointer;
     }
     .items-dropdown span {
@@ -92,15 +93,17 @@
         color: #2A5CDE;
     }
     .items-dropdown .active {
-        color: #2A5CDE
+        color: #2A5CDE;
     }
 </style>
 
 <script>
 export default {
+    props: { 
+        itemActive: {type:Object}
+     },
     data: function () {
         return {
-            itemActive: '',
             sidebar: [
                 {
                     name: 'Profil',
@@ -113,7 +116,7 @@ export default {
                         },
                         isActive: false
                     },
-                    url: 'Pengaturan',
+                    url: 'Profil',
                     isActive: false
                 },
                 {
@@ -135,13 +138,12 @@ export default {
     },
     created: function () {
         this.conditionLevel('ADMIN');
-        this.sidebarActive(this.itemActive);
+        this.sidebarActive(this.$props.itemActive);
     },
     methods: {
         conditionLevel: function (param) {
             switch(param) {
                 case 'USER':
-                    this.itemActive = 'My Task'
                     this.sidebar.unshift(
                         {
                             name: 'My Task',
@@ -160,7 +162,6 @@ export default {
                     )
                     break;
                 case 'ADMIN':
-                    this.itemActive = 'Dashboard'
                     this.sidebar.unshift(
                         {
                             name: 'Dashboard',
@@ -206,8 +207,14 @@ export default {
             }
         },
         sidebarActive: function (param) {
-            let index = this.searchIndexByName(param, this.sidebar);
-            this.sidebar[index].isActive = true;
+            const index = this.searchIndexByName(param.item, this.sidebar);
+            const dd = this.sidebar[index];
+            if (param.dropdown.isActive) {
+                const ddIndex = this.searchIndexByName(param.dropdown.item, dd.dropdown.items);
+                dd.dropdown.items[ddIndex].isActive= true;
+                dd.dropdown.set.isOpen= true;
+            }
+            return dd.isActive = true;
         },
         searchIndexByName: function (key, array) {
             for (var i=0; i < array.length; i++) {
@@ -218,6 +225,20 @@ export default {
         },
         redirect: function (param) {
             return this.$router.push({ name: param }).catch(err => err);          
+        },
+        resetActive: function () {
+            for (var i=0; i < this.sidebar.length; i++) {
+                if (this.sidebar[i].isActive = true) {
+                    return this.sidebar[i].isActive = false;
+                }
+                if (this.sidebar[i].dropdown.isActive = true) {
+                    for (var x=0; x<this.sidebar[i].dropdown.items.length; x++) {
+                        if (this.sidebar[i].dropdown.items[x].isActive = true) {
+                            return this.sidebar[i].dropdown.items[x].isActive = false
+                        }
+                    }
+                }
+            }
         },
         dropDown: function (param) {
             let index = this.searchIndexByName(param, this.sidebar);
