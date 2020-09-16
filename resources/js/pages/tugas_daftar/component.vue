@@ -2,7 +2,7 @@
     <section class="body">
         <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
         <div class="content">
-            <span>Daftar Tugas</span>
+            <Title v-bind="{ title: 'Daftar Tugas' }" />
         </div>
     </section>
 </template>
@@ -13,7 +13,7 @@
         display: flex;
     }
     .content {
-        padding: 20px;
+        padding: 35px;
         width: calc(100vw - 300px);
     }
 </style>
@@ -23,7 +23,8 @@ import { components } from "../../components/index"
 
 export default {
     components: {
-        Sidebar: components.Sidebar
+        Sidebar: components.Sidebar,
+        Title: components.Title
     },
     props: {
         Active: Object
