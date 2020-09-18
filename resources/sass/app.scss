@@ -12,6 +12,9 @@
 ::-webkit-scrollbar {
   width: 5px;
 }
+.content::-webkit-scrollbar {
+  width: 0;
+}
 ::-webkit-scrollbar-track {
   background: #e3e3e3;
   border-radius: 25px;
