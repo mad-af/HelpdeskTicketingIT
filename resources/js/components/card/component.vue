@@ -52,6 +52,7 @@
  }
  .contents {
     padding: 10px 26px 31px;
+    background: #fff;
  }
 </style>
 

@@ -45,7 +45,7 @@
         line-height: 1;
     }
     .section .id {
-        color: #ccc;
+        color: #828282;
     }
     .list:hover {
         background: #fafafa;
