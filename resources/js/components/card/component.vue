@@ -19,7 +19,6 @@
 
 <style lang="scss" scoped>
  .card {
-    margin: 15px 0 0;
     background: #fff;
     border-radius: 8px;
  }

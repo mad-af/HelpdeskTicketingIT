@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
     span {
         font-size: 36px;
-        line-height: 20px;
+        line-height: 1;
     }
 </style>
 

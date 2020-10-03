@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
     .side {
-        margin: 15px 0 0 21px;
+        margin: 0 0 0 21px;
         width: 300px;
         height: calc(100vh - 150px - 27px);
         background: #fff;

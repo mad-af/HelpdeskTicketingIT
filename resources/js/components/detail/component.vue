@@ -183,9 +183,9 @@
     .nama input {
         width: 100%;
         padding: 2px;
-        border: none;
-        font-size: 12px;
+        font: 400 12px lato;
         color: #8a8a8a;
+        border: none;
         border-bottom: 1px solid transparent;
     }
     .nama input:focus {

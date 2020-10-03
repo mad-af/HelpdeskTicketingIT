@@ -6,6 +6,7 @@ import List from './list/component.vue'
 import Side from './side/component.vue'
 import Detail from './detail/component.vue'
 import Editor from './editor/component.vue'
+import Profil from './profil/component.vue'
 
 export const components = {
     Navbar,
@@ -15,5 +16,6 @@ export const components = {
     List,
     Side,
     Detail,
-    Editor
+    Editor,
+    Profil
 }

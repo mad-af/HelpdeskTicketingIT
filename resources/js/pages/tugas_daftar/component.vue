@@ -4,7 +4,7 @@
         <div class="content scroll">
             <Title v-bind="{ title: 'Daftar Tugas' }" />
             <div class="sub-content">
-                <div v-bind:style="{ flex : 'auto' }">
+                <div class="card">
                     <Card v-bind="{ title: 'Tugas', issues: '4' }">
                         <List class="list" v-for="x in list" :key="x.id" v-on:click.native="task(x.id)" v-bind="{ data: x }" v-bind:class="x.id===open.id ? 'active' : '' " />
                     </Card>
@@ -30,8 +30,12 @@
         height: calc(100vh - 80px);
     }
     .sub-content {
+        margin: 15px 0 0;
         display: flex;
         justify-content: space-between;
+    }
+    .card{
+        flex: auto;
     }
     .list {
         border-left: .5px solid #e3e3e3;
