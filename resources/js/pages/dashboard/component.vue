@@ -4,10 +4,10 @@
         <div class="content">
             <Title v-bind="{ title: 'Dashboard' }" />
             <div class="sub-content">
-                <SimpleCard v-bind="{ width: '65%', title: 'TUGAS' }">
-                    <Task />
+                <SimpleCard v-bind="{ title: 'tugas', width: '65%' }">
+                    <TaskInfo />
                 </SimpleCard>
-                <SimpleCard>
+                <SimpleCard v-bind="{ title: 'kalender', width: 'auto' }">
                     
                 </SimpleCard>
             </div>
@@ -37,7 +37,7 @@ export default {
         Sidebar: components.Sidebar,
         Title: components.Title,
         SimpleCard: components.SimpleCard,
-        Task: components.Task
+        TaskInfo: components.TaskInfo
     },
     props: {
         Active: Object

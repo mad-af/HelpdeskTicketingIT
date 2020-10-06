@@ -2,7 +2,7 @@
     <section>
         <div class="card" v-bind:style="{ width: width }">
             <div class="title">
-                <span>{{ title }}</span>
+                <span>{{ title.toUpperCase() }}</span>
             </div>
             <div>
                 <slot />

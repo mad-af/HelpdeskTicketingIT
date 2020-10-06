@@ -8,7 +8,7 @@ import Detail from './detail/component.vue'
 import Editor from './editor/component.vue'
 import Profil from './profil/component.vue'
 import SimpleCard from './simple-card/component.vue'
-import Task from './task/component.vue'
+import TaskInfo from './task-info/component.vue'
 
 export const components = {
     Navbar,
@@ -21,5 +21,5 @@ export const components = {
     Editor,
     Profil,
     SimpleCard,
-    Task
+    TaskInfo
 }
