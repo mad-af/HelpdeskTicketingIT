@@ -9,6 +9,8 @@ import Editor from './editor/component.vue'
 import Profil from './profil/component.vue'
 import SimpleCard from './simple-card/component.vue'
 import TaskInfo from './task-info/component.vue'
+import Calendar from './calendar/component.vue'
+import ListMyTask from './list-my-task/component.vue'
 
 export const components = {
     Navbar,
@@ -21,5 +23,7 @@ export const components = {
     Editor,
     Profil,
     SimpleCard,
-    TaskInfo
+    TaskInfo,
+    Calendar,
+    ListMyTask
 }

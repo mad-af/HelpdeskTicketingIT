@@ -40,6 +40,6 @@ body {
 }
 
 .scroll {
-  overflow-y: auto;
+  overflow-y: auto !important;
 }
 

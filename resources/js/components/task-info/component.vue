@@ -40,6 +40,8 @@
         align-items: center;
     }
     .number {
+        margin: -10px 0 0;
+        line-height: 1;
         font-size: 60px;
         color: #378DF1;
     }

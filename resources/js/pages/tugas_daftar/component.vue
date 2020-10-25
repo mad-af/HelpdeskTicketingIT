@@ -6,7 +6,11 @@
             <div class="sub-content">
                 <div class="card">
                     <Card v-bind="{ title: 'Tugas', issues: '4' }">
-                        <List class="list" v-for="x in list" :key="x.id" v-on:click.native="task(x.id)" v-bind="{ data: x }" v-bind:class="x.id===open.id ? 'active' : '' " />
+                        <List class="list" v-for="x in list" :key="x.id" 
+                            v-on:click.native="task(x.id)" 
+                            v-bind="{ data: x }" 
+                            v-bind:class="x.id===open.id ? 'active' : '' " 
+                        />
                     </Card>
                 </div>
                 <Side v-show="open.isOpen">
