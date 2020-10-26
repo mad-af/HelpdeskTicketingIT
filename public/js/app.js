@@ -3693,26 +3693,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/app/component.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/index */ "./resources/js/components/index.js");
 //
 //
 //
 //
 //
 //
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    Navbar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Navbar,
-    Sidebar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Sidebar
-  }
-});
 
 /***/ }),
 
@@ -3794,9 +3783,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    Navbar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Navbar,
     Sidebar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Sidebar,
     Title: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Title,
     SimpleCard: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].SimpleCard,
@@ -3870,9 +3863,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    Navbar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Navbar,
     Sidebar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Sidebar,
     Title: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Title,
     Profil: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Profil
@@ -3956,9 +3953,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    Navbar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Navbar,
     Sidebar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Sidebar,
     Title: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Title,
     Card: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Card,
@@ -4073,9 +4074,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    Navbar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Navbar,
     Sidebar: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Sidebar,
     Title: _components_index__WEBPACK_IMPORTED_MODULE_0__["components"].Title
   },
@@ -80471,7 +80476,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("Navbar"), _vm._v(" "), _c("router-view")], 1)
+  return _c("div", [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -80497,94 +80502,106 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "body" },
     [
-      _c(
-        "Sidebar",
-        _vm._b(
-          { attrs: { id: "sidebar" } },
-          "Sidebar",
-          { itemActive: _vm.Active },
-          false
-        )
-      ),
+      _c("Navbar"),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content scroll" },
+        { staticClass: "body" },
         [
-          _c("Title", _vm._b({}, "Title", { title: "Dashboard" }, false)),
-          _vm._v(" "),
-          _c("div", { staticClass: "sub-content" }, [
-            _c(
-              "div",
-              { staticClass: "column" },
-              [
-                _c(
-                  "SimpleCard",
-                  _vm._b({}, "SimpleCard", { title: "tugas" }, false),
-                  [_c("TaskInfo")],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "SimpleCard",
-                  _vm._b({}, "SimpleCard", { title: "tugas ku" }, false),
-                  _vm._l(_vm.list, function(x) {
-                    return _c(
-                      "ListMyTask",
-                      _vm._b(
-                        {
-                          key: x.id,
-                          staticClass: "list",
-                          nativeOn: {
-                            click: function($event) {
-                              return _vm.task(x.id)
-                            }
-                          }
-                        },
-                        "ListMyTask",
-                        { data: x },
-                        false
-                      )
-                    )
-                  }),
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "column" },
-              [
-                _c(
-                  "SimpleCard",
-                  _vm._b(
-                    { staticStyle: { flex: "60%" } },
-                    "SimpleCard",
-                    { title: "kalender" },
-                    false
-                  ),
-                  [_c("Calendar")],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "SimpleCard",
-                  _vm._b(
-                    { staticStyle: { flex: "40%" } },
-                    "SimpleCard",
-                    { title: "Peristiwa" },
-                    false
-                  ),
-                  [_vm._v("\n                    nothing\n                ")]
-                )
-              ],
-              1
+          _c(
+            "Sidebar",
+            _vm._b(
+              { attrs: { id: "sidebar" } },
+              "Sidebar",
+              { itemActive: _vm.Active },
+              false
             )
-          ])
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "content scroll" },
+            [
+              _c("Title", _vm._b({}, "Title", { title: "Dashboard" }, false)),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-content" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "SimpleCard",
+                      _vm._b({}, "SimpleCard", { title: "tugas" }, false),
+                      [_c("TaskInfo")],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "SimpleCard",
+                      _vm._b({}, "SimpleCard", { title: "tugas ku" }, false),
+                      _vm._l(_vm.list, function(x) {
+                        return _c(
+                          "ListMyTask",
+                          _vm._b(
+                            {
+                              key: x.id,
+                              staticClass: "list",
+                              nativeOn: {
+                                click: function($event) {
+                                  return _vm.task(x.id)
+                                }
+                              }
+                            },
+                            "ListMyTask",
+                            { data: x },
+                            false
+                          )
+                        )
+                      }),
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "SimpleCard",
+                      _vm._b(
+                        { staticStyle: { flex: "60%" } },
+                        "SimpleCard",
+                        { title: "kalender" },
+                        false
+                      ),
+                      [_c("Calendar")],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "SimpleCard",
+                      _vm._b(
+                        { staticStyle: { flex: "40%" } },
+                        "SimpleCard",
+                        { title: "Peristiwa" },
+                        false
+                      ),
+                      [
+                        _vm._v(
+                          "\n                        nothing\n                    "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
         ],
         1
       )
@@ -80616,25 +80633,33 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "body" },
     [
-      _c(
-        "Sidebar",
-        _vm._b(
-          { attrs: { id: "sidebar" } },
-          "Sidebar",
-          { itemActive: _vm.Active },
-          false
-        )
-      ),
+      _c("Navbar"),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content" },
+        { staticClass: "body" },
         [
-          _c("Title", _vm._b({}, "Title", { title: "Profil" }, false)),
+          _c(
+            "Sidebar",
+            _vm._b(
+              { attrs: { id: "sidebar" } },
+              "Sidebar",
+              { itemActive: _vm.Active },
+              false
+            )
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "sub-content" }, [_c("Profil")], 1)
+          _c(
+            "div",
+            { staticClass: "content" },
+            [
+              _c("Title", _vm._b({}, "Title", { title: "Profil" }, false)),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-content" }, [_c("Profil")], 1)
+            ],
+            1
+          )
         ],
         1
       )
@@ -80666,86 +80691,107 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "body" },
     [
-      _c(
-        "Sidebar",
-        _vm._b(
-          { attrs: { id: "sidebar" } },
-          "Sidebar",
-          { itemActive: _vm.Active },
-          false
-        )
-      ),
+      _c("Navbar"),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content scroll" },
+        { staticClass: "body" },
         [
-          _c("Title", _vm._b({}, "Title", { title: "Daftar Tugas" }, false)),
+          _c(
+            "Sidebar",
+            _vm._b(
+              { attrs: { id: "sidebar" } },
+              "Sidebar",
+              { itemActive: _vm.Active },
+              false
+            )
+          ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "sub-content" },
+            { staticClass: "content scroll" },
             [
               _c(
-                "div",
-                { staticClass: "card" },
-                [
-                  _c(
-                    "Card",
-                    _vm._b({}, "Card", { title: "Tugas", issues: "4" }, false),
-                    _vm._l(_vm.list, function(x) {
-                      return _c(
-                        "List",
-                        _vm._b(
-                          {
-                            key: x.id,
-                            staticClass: "list",
-                            class: x.id === _vm.open.id ? "active" : "",
-                            nativeOn: {
-                              click: function($event) {
-                                return _vm.task(x.id)
-                              }
-                            }
-                          },
-                          "List",
-                          { data: x },
-                          false
-                        )
-                      )
-                    }),
-                    1
-                  )
-                ],
-                1
+                "Title",
+                _vm._b({}, "Title", { title: "Daftar Tugas" }, false)
               ),
               _vm._v(" "),
               _c(
-                "Side",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.open.isOpen,
-                      expression: "open.isOpen"
-                    }
-                  ]
-                },
+                "div",
+                { staticClass: "sub-content" },
                 [
                   _c(
-                    "Detail",
-                    _vm._b(
-                      {},
-                      "Detail",
-                      { data: _vm.data, person: _vm.person },
-                      false
-                    ),
+                    "div",
+                    { staticClass: "card" },
                     [
                       _c(
-                        "Editor",
-                        _vm._b({}, "Editor", { contents: _vm.contents }, false)
+                        "Card",
+                        _vm._b(
+                          {},
+                          "Card",
+                          { title: "Tugas", issues: "4" },
+                          false
+                        ),
+                        _vm._l(_vm.list, function(x) {
+                          return _c(
+                            "List",
+                            _vm._b(
+                              {
+                                key: x.id,
+                                staticClass: "list",
+                                class: x.id === _vm.open.id ? "active" : "",
+                                nativeOn: {
+                                  click: function($event) {
+                                    return _vm.task(x.id)
+                                  }
+                                }
+                              },
+                              "List",
+                              { data: x },
+                              false
+                            )
+                          )
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "Side",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.open.isOpen,
+                          expression: "open.isOpen"
+                        }
+                      ]
+                    },
+                    [
+                      _c(
+                        "Detail",
+                        _vm._b(
+                          {},
+                          "Detail",
+                          { data: _vm.data, person: _vm.person },
+                          false
+                        ),
+                        [
+                          _c(
+                            "Editor",
+                            _vm._b(
+                              {},
+                              "Editor",
+                              { contents: _vm.contents },
+                              false
+                            )
+                          )
+                        ],
+                        1
                       )
                     ],
                     1
@@ -80787,22 +80833,35 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "body" },
     [
-      _c(
-        "Sidebar",
-        _vm._b(
-          { attrs: { id: "sidebar" } },
-          "Sidebar",
-          { itemActive: _vm.Active },
-          false
-        )
-      ),
+      _c("Navbar"),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "content" },
-        [_c("Title", _vm._b({}, "Title", { title: "Tugas Laporan" }, false))],
+        { staticClass: "body" },
+        [
+          _c(
+            "Sidebar",
+            _vm._b(
+              { attrs: { id: "sidebar" } },
+              "Sidebar",
+              { itemActive: _vm.Active },
+              false
+            )
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "content" },
+            [
+              _c(
+                "Title",
+                _vm._b({}, "Title", { title: "Tugas Laporan" }, false)
+              )
+            ],
+            1
+          )
+        ],
         1
       )
     ],
@@ -97096,6 +97155,10 @@ var routes = [{
       isActive: true
     }
   }
+}, {
+  name: 'Masuk',
+  path: '/Masuk',
+  component: _pages_index_js__WEBPACK_IMPORTED_MODULE_3__["pages"].coba
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -98508,14 +98571,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./resources/js/pages/app/component.vue ***!
   \**********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_vue_vue_type_template_id_72c31f14___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./component.vue?vue&type=template&id=72c31f14& */ "./resources/js/pages/app/component.vue?vue&type=template&id=72c31f14&");
 /* harmony import */ var _component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component.vue?vue&type=script&lang=js& */ "./resources/js/pages/app/component.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -98545,13 +98609,15 @@ component.options.__file = "resources/js/pages/app/component.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/pages/app/component.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./component.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/app/component.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

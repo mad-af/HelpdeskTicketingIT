@@ -1,27 +1,30 @@
 <template>
-    <section class="body">
-        <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
-        <div class="content scroll">
-            <Title v-bind="{ title: 'Dashboard' }" />
-            <div class="sub-content">
-                <div class="column">
-                    <SimpleCard v-bind="{ title: 'tugas' }">
-                        <TaskInfo />
-                    </SimpleCard>
-                    <SimpleCard v-bind="{ title: 'tugas ku' }">
-                        <ListMyTask class="list" v-for="x in list" :key="x.id" 
-                            v-on:click.native="task(x.id)" 
-                            v-bind="{ data: x }" 
-                        />
-                    </SimpleCard>
-                </div>
-                <div class="column">
-                    <SimpleCard style="flex: 60%" v-bind="{ title: 'kalender'}">
-                        <Calendar />
-                    </SimpleCard>
-                    <SimpleCard style="flex: 40%" v-bind="{ title: 'Peristiwa'}">
-                        nothing
-                    </SimpleCard>
+    <section>
+        <Navbar />
+        <div class="body">
+            <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
+            <div class="content scroll">
+                <Title v-bind="{ title: 'Dashboard' }" />
+                <div class="sub-content">
+                    <div class="column">
+                        <SimpleCard v-bind="{ title: 'tugas' }">
+                            <TaskInfo />
+                        </SimpleCard>
+                        <SimpleCard v-bind="{ title: 'tugas ku' }">
+                            <ListMyTask class="list" v-for="x in list" :key="x.id" 
+                                v-on:click.native="task(x.id)" 
+                                v-bind="{ data: x }" 
+                            />
+                        </SimpleCard>
+                    </div>
+                    <div class="column">
+                        <SimpleCard style="flex: 60%" v-bind="{ title: 'kalender'}">
+                            <Calendar />
+                        </SimpleCard>
+                        <SimpleCard style="flex: 40%" v-bind="{ title: 'Peristiwa'}">
+                            nothing
+                        </SimpleCard>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,6 +74,7 @@ import { components } from "../../components/index"
 
 export default {
     components: {
+        Navbar: components.Navbar,
         Sidebar: components.Sidebar,
         Title: components.Title,
         SimpleCard: components.SimpleCard,

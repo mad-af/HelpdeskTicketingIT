@@ -85,6 +85,11 @@ const routes = [
                 isActive: true
             }
         }
+    },
+    {
+        name: 'Masuk',
+        path: '/Masuk',
+        component: pages.coba
     }
 ]
 

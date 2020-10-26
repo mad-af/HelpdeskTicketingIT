@@ -1,23 +1,26 @@
 <template>
-    <section class="body">
-        <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
-        <div class="content scroll">
-            <Title v-bind="{ title: 'Daftar Tugas' }" />
-            <div class="sub-content">
-                <div class="card">
-                    <Card v-bind="{ title: 'Tugas', issues: '4' }">
-                        <List class="list" v-for="x in list" :key="x.id" 
-                            v-on:click.native="task(x.id)" 
-                            v-bind="{ data: x }" 
-                            v-bind:class="x.id===open.id ? 'active' : '' " 
-                        />
-                    </Card>
+    <section>
+        <Navbar />
+        <div class="body">
+            <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
+            <div class="content scroll">
+                <Title v-bind="{ title: 'Daftar Tugas' }" />
+                <div class="sub-content">
+                    <div class="card">
+                        <Card v-bind="{ title: 'Tugas', issues: '4' }">
+                            <List class="list" v-for="x in list" :key="x.id" 
+                                v-on:click.native="task(x.id)" 
+                                v-bind="{ data: x }" 
+                                v-bind:class="x.id===open.id ? 'active' : '' " 
+                            />
+                        </Card>
+                    </div>
+                    <Side v-show="open.isOpen">
+                        <Detail v-bind="{ data: data, person: person }" >
+                            <Editor v-bind="{ contents: contents }" />
+                        </Detail>
+                    </Side>
                 </div>
-                <Side v-show="open.isOpen">
-                    <Detail v-bind="{ data: data, person: person }" >
-                        <Editor v-bind="{ contents: contents }" />
-                    </Detail>
-                </Side>
             </div>
         </div>
     </section>
@@ -62,6 +65,7 @@ import { components } from "../../components/index"
 
 export default {
     components: {
+        Navbar: components.Navbar,
         Sidebar: components.Sidebar,
         Title: components.Title,
         Card: components.Card,

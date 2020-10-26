@@ -1,10 +1,13 @@
 <template>
-    <section class="body">
-        <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
-        <div class="content">
-            <Title v-bind="{ title: 'Profil' }" />
-            <div class="sub-content">
-                <Profil />
+    <section>
+        <Navbar />
+        <div class="body">
+            <Sidebar id="sidebar" v-bind="{ itemActive: Active }" />
+            <div class="content">
+                <Title v-bind="{ title: 'Profil' }" />
+                <div class="sub-content">
+                    <Profil />
+                </div>
             </div>
         </div>
     </section>
@@ -27,6 +30,7 @@ import { components } from "../../components/index"
 
 export default {
     components: {
+        Navbar: components.Navbar,
         Sidebar: components.Sidebar,
         Title: components.Title,
         Profil: components.Profil
