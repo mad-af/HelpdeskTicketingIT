@@ -89,7 +89,7 @@ const routes = [
     {
         name: 'Masuk',
         path: '/Masuk',
-        component: pages.coba
+        component: pages.Masuk
     }
 ]
 
