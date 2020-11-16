@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0c0458cd7bf0aa562d0e4f09f6d9d59",
+    "content-hash": "c716e8c483257a76f241e56215630bd6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1984,6 +1984,17 @@
                 "guid",
                 "identifier",
                 "uuid"
+            ],
+            "support": {
+                "issues": "https://github.com/ramsey/uuid/issues",
+                "rss": "https://github.com/ramsey/uuid/releases.atom",
+                "source": "https://github.com/ramsey/uuid"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ramsey",
+                    "type": "github"
+                }
             ],
             "time": "2020-08-18T17:17:46+00:00"
         },
@@ -5976,5 +5987,6 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
