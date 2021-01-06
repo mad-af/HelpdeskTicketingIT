@@ -22,6 +22,17 @@ class Controller extends BaseController
         return response() -> json($response);
     }
 
+    public function responsetp($data, $meta) {
+        $response = (object) [    
+            'code' => 200,
+            'data' => $data,
+            'massage' => 'Your Request Has Been Processed',
+            'meta' => $meta,
+            'success' => true
+        ];
+        return response() -> json($response);
+    }
+
     public function responsef($message, $code) {
         $response = (object) [
             'code' => $code,

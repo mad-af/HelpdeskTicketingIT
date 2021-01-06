@@ -9,7 +9,14 @@ class UserService extends Service {
     // QUERY
     public function findAll() {
         $query = User::all();
-        $query->fresh();
+        if (!$query) {
+            return $this->responsef();
+        }
+        return $this->responset($query);
+    }
+
+    public function findManyPagination($payload) {
+        $query = User::where('isDelete', false)->simplePaginate($payload);
         if (!$query) {
             return $this->responsef();
         }
@@ -32,10 +39,18 @@ class UserService extends Service {
         return $this->responset($query);
     }
 
+    public function countData() {
+        $query = User::where('isDelete', false)->count();
+        if (!$query) {
+            return $this->responsef();
+        }
+        return $this->responset($query);
+    }
+
     // COMMAND
     public function insertOne($payload) {
         try {
-            $query = User::create($payload->all());
+            $query = User::create($payload);
         } catch (\Exception $e) {
             return $this->responsef($e->errorInfo[1]);
         }
@@ -45,8 +60,9 @@ class UserService extends Service {
     public function upsertOne($payload) {
         try {
             $query = User::find($payload->id);
-            $query->update($payload->request->all());
+            $query->update($payload->data);
         } catch (\Throwable $e) {
+            dd($e);
             return $this->responsef();
         }
         return $this->responset($query);
