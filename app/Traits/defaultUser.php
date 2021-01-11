@@ -12,7 +12,7 @@ trait defaultUser {
 
         static::creating(function ($model) {
             try {
-                $model->id = Generator::uuid4()->toString();
+                $model->userId = Generator::uuid4()->toString();
                 $model->isDelete = false;
             } catch (UnsatisfiedDependencyException $e) {
                 abort(500, $e->getMessage());

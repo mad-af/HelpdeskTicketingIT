@@ -10,14 +10,14 @@ class UserSchema {
             'name' => $payload->name,
             'email' => $payload->email,
             'password' => Hash::make($payload->password),
-            'level' => $payload->level
+            // 'level' => $payload->level
         ];
     }
 
     public static function schemaUpdate($payload) {
         $data = array_shift($payload);
         return (object) [
-            'id' => array_shift($payload),
+            'userId' => array_shift($payload),
             'data' => [
                 'name' => $data->name
             ]

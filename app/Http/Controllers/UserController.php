@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Helpers\Massage;
 use App\Helpers\ErrorCode;
 use App\Helpers\HttpError;
@@ -43,8 +42,8 @@ class UserController extends Controller{
         return $this->responsetp($result, $meta);
     }
 
-    public function getUserById($request) {
-        $userData = $this->user->findById($request)->getData();
+    public function getUserById($param) {
+        $userData = $this->user->findById($param)->getData();
         if ($userData->err) {
             return $this->responsef(Massage::USER_NOT_FOUND, HttpError::NOT_FOUND);
         }
@@ -60,35 +59,38 @@ class UserController extends Controller{
             return $this->responsef(Massage::EMAIL_REGISTERED, HttpError::CONFLICT);
         }
         
-        $result = $this->user->findByEmail($query->data->email)->getData();
-        if ($result->err) {
+        $userData = $this->user->findByEmail($query->data->email)->getData();
+        if ($userData->err) {
             return $this->responsef(Massage::USER_NOT_FOUND, HttpError::NOT_FOUND);
         }
-    
-        return $this->responset($result->data);
+
+        $result = $userData->data;
+        return $this->responset($result);
     }
 
-    public function updateUserById(Request $request, $id) {
-        $userData = $this->user->findById($id)->getData();
+    public function updateUserById(Request $request, $param) {
+        $userData = $this->user->findById($param)->getData();
         if ($userData->err) {
             return $this->responsef(Massage::USER_NOT_FOUND, HttpError::NOT_FOUND);
         }
         
-        $payload = UserSchema::schemaUpdate([$request, $id]);
-        $result = $this->user->upsertOne($payload)->getData();
-        if ($result->err) {
+        $payload = UserSchema::schemaUpdate([$request, $param]);
+        $query = $this->user->upsertOne($payload)->getData();
+        if ($query->err) {
             return $this->responsef(Massage::UPDATE_FAILED, HttpError::CONFLICT);
         }
 
-        return $this->responset($result->data);
+        $result = $query->data;
+        return $this->responset($result);
     }
 
-    public function deleteUserById($id) {
-        $query = $this->user->isDeleteOne($id)->getData();
+    public function deleteUserById($param) {
+        $query = $this->user->isDeleteOne($param)->getData();
         if ($query->err) {
             return $this->responsef(Massage::DELETED_FAILED, HttpError::CONFLICT);
         }
 
-        return $this->responset($query->data);
+        $result = $query->data;
+        return $this->responset($result);
     }
 }

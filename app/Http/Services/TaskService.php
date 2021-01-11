@@ -2,13 +2,13 @@
 
 namespace App\Http\Services;
 
-use App\User;
+use App\Task;
 use Illuminate\Http\Request;
 
-class UserService extends Service {
+class TaskService extends Service {
     // QUERY
     public function findAll() {
-        $query = User::all();
+        $query = Task::all();
         if (!$query) {
             return $this->responsef();
         }
@@ -16,7 +16,7 @@ class UserService extends Service {
     }
 
     public function findManyPagination($payload) {
-        $query = User::where('isDelete', false)->simplePaginate($payload);
+        $query = Task::where('isDelete', false)->simplePaginate($payload);
         if (!$query) {
             return $this->responsef();
         }
@@ -24,7 +24,7 @@ class UserService extends Service {
     }
 
     public function findById($payload) {
-        $query = User::where('userId' ,$payload)->first();
+        $query = Task::find($payload);
         if (!$query) {
             return $this->responsef();
         }
@@ -32,7 +32,7 @@ class UserService extends Service {
     }
 
     public function findByEmail($payload) {
-        $query = User::where('email' ,$payload)->first();
+        $query = Task::where('email' ,$payload)->first();
         if (!$query) {
             return $this->responsef();
         }
@@ -40,7 +40,7 @@ class UserService extends Service {
     }
 
     public function countData() {
-        $query = User::where('isDelete', false)->count();
+        $query = Task::where('isDelete', false)->count();
         if (!$query) {
             return $this->responsef();
         }
@@ -50,7 +50,7 @@ class UserService extends Service {
     // COMMAND
     public function insertOne($payload) {
         try {
-            $query = User::create($payload);
+            $query = Task::create($payload);
         } catch (\Exception $e) {
             return $this->responsef($e->errorInfo[1]);
         }
@@ -59,9 +59,10 @@ class UserService extends Service {
 
     public function upsertOne($payload) {
         try {
-            $query = User::where('userId' ,$payload->userId);
+            $query = Task::find($payload->id);
             $query->update($payload->data);
         } catch (\Throwable $e) {
+            dd($e);
             return $this->responsef();
         }
         return $this->responset($query);
@@ -69,10 +70,10 @@ class UserService extends Service {
 
     public function isDeleteOne($payload) {
         try {
-            $query =  User::where('userId' ,$payload);
-            $query->update(['isDelete' => true]);
+            $query = Task::find($payload);
+            $query->isDelete = true;
+            $query->save();
         } catch (\Throwable $e) {
-            dd($e);
             return $this->responsef();
         }
         return $this->responset($query);
